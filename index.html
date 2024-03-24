@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DIA | CODENAME Generator</title>
+	<style>
+		body {
+			background-color: #f0f0f0;
+			font-family: 'Arial Narrow', sans-serif;
+
+		}
+		.banner {
+			width:100%;
+			display: block;
+			position: top center middle;
+			background-color: #CD853F;
+			color: #fff;
+			font-family: 'Arial Narrow', sans-serif;
+			text-align: center;
+			font-weight: bold;
+		}
+		.banner#dod {
+			width:100%;
+			display: block;
+			position: top center middle;
+			background-color: #000;
+			color: #fff;
+			font-family: 'Arial Narrow', sans-serif;
+			text-align: center;
+		}
+
+		h1 {
+			text-align: center;
+			color: #007bff;
+		}
+
+		/* Form styles */
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin: 20px;
+		}
+
+		label {
+			margin: 10px;
+		}
+
+		input, textarea {
+			width: 300px;
+		}
+
+		textarea {
+			height: 100px;
+		}
+
+		button {
+			width: 200px;
+			height: 40px;
+			background-color: #4CAF50;
+			color: white;
+			border: 2px ridge #008000;
+			margin: 5px;
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: #33CC33;
+			color: white;
+			border-width: 2px;
+			border-style: outset;
+			border-color: #006600;
+			border-radius: 3px;
+			box-shadow: 0 0 30px -20px #808080;
+			border-top-style: solid;
+			border-left-style: groove;
+			border-right-style: ridge;
+			border-bottom-style: ridge
+
+		}
+		table {
+			border-collapse: collapse;
+			margin: 20px auto;
+		}
+
+		th, td {
+			border: 1px solid black;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+		<!-- Banner -->
+	<div class="banner">
+		TOP SECRET//SCI//SRC-Aurora/REL TO USA, AUS, CAN
+			</div>
+		<div class="banner" id="dod">
+			DEPARTMENT OF DEFENSE // DIA // NSA // DEFENSE CLANDESTINE SERVICE
+		</div>
+	<h1>DIA | DoD NICKNAME & CODEWORD GENERATOR</h1>
+	<form id="form">
+		<label for="quantity">Enter the Desired Qty. of OPERATION NAMES:</label>
+		<input id="quantity" type="number" min="1" placeholder="10">
+		<button id="generate" type="button">GENERATE CODENAMES</button>
+	</form>
+	<table id="table">
+		<thead>
+			<tr>
+				<th>OPERATION CODENAMES</th>
+			</tr>
+		</thead>
+		<tbody id="tbody">
+		</tbody>
+	</table>
+	<script>
+		// Get the elements from the document
+		const form = document.getElementById("form");
+		const quantity = document.getElementById("quantity");
+		const generate = document.getElementById("generate");
+		const table = document.getElementById("table");
+		const tbody = document.getElementById("tbody");
+
+		// Add an event listener to the generate button
+		generate.addEventListener("click", function() {
+			// Clear the previous results
+			tbody.innerHTML = "";
+
+			// Get the value from the input
+			const num = parseInt(quantity.value);
+
+			// Check if the input is valid
+			if (isNaN(num) || num < 1) {
+				alert("Invalid Input! The 'NICKA System' requires an input that is a positive integer.");
+				return;
+			}
+
+			// Create a bank of words to randomly select from
+			const words = ['WIDOW','SPIDER','MAMBA','ADDER','APOLLO','AVALANCHE','BADGER','BANSHEE','GRIZZLY','BISHOP','BOOMER','BOAR','BERSERKER','BLACK KNIGHT','BREAKER','BUFFALO','CANARY','CORAL','COPPER','CRIMSON','CROW','DANGER','DAGGER','DINGO','DIAMOND','DRAGON','EAGLE','FIRESTICK','FOX','FIREFLY','GRIFFIN','GHOST','GOPHER','HARVESTER','HIGHLANDER','HUNTER','HOUND','HAWK','JACKSON','JESTER','KAHUNA','KEEPER','LANTERN','LYNX','LEOPARD','MAGE','MONARCH','MOTHER','OBELISK','OCELOT','ORACLE','OVERLORD','PAWN','PEQUOD','POLARIS','RAZOR','RED DRAGON','RED QUEEN','REAVER','RORK','RIPLEY','SABRE','SEAL','SHADOW','SHAMAN','SPARROW','SPECTRE','SPEARFISH','SPEAR','STONE','SWEEPER','TOMAHAWK','TIGER','HATCHET','UMBRA','UMBRELLA','VANDAL','VIPER','SNAKE','WARDEN','WANDERER','WARLOCK','WHITE WIZARD','WHITE RABBIT','X-RAY','ZEBRA','ZIPPER','TORCH','BLADE','TOXIC','MIST','SMOKE','AVALANCHE','AVATAR','ARCHER','ANIMA','BARRACUDA','BANSHEE','BLACKOUT','BLITZ','BLIZZARD','BOLT','BULLDOG','BUTCHER','CARNIVAL','CASTLE','CHARGER','COBRA','COMET','CRIMSON','CROW','CRUSADER','DAGGER','DARKSTAR','DISCIPLE','DRAGON','EAGLE','ECLIPSE','ENIGMA','EREBUS','EXCALIBUR','FALCON','FIRESTORM','FOX','FROST','FURY','GAMMA','GOLIATH','GLADIATOR','GHOST','GRIFFIN','GRINCH','GUARDIAN','HARRIER','HAVOC','HAZARD','HELLHOUND','HELIOS','HORUS','HYDRA','HUNTER','HURRICANE','HAMMER','INFERNO','IRONHIDE','IRONCLAD','IVORY','JAGUAR','JACKAL','JUGGERNAUT','KODIAK','KESTREL','KNIGHT','KUMA','LANCER','LIGHTNING','LYNX','MAGICIAN','MAMBA','MAVERICK','MARAUDER','MIRAGE','MONGOOSE','MUSTANG','NEBULA','NEMESIS','NIGHTHAWK','NIGHTSHADE','NEPTUNE','NOVA','OBSIDIAN','OMEGA','ONYX','ORACLE','ORION','OXIDE','OUTLAW','PANTHER','PALADIN','PHANTOM','PHOENIX','PUMA','PYRO','POSEIDON','QUAKER','RAPTOR','RAZOR','RAZORBACK','REAPER','RENEGADE','RIPTIDE','RONIN','RUBEDO','SABER','SAPPHIRE','SANDMAN','SANDSTORM','SCALER','SCORPION','SHADOW','SOLO','SPECTRE','SPITFIRE','STALKER','STORMRIDER','STRIKER','TALON','TEMPEST','THUNDER','TITAN','TYPHOON','UNDERTAKER','UNDERTOW','URSA','VALKYRIE','VENGEANCE','VENOM','VIGILANTE','VIPER','VORTEX','WARBRINGER','WARCRY','WARHAWK','WARLOCK','WARLORD','WARDEN','WHISPER','WIDOWMAKER','WOLVERINE','WRAITH','WYVERN','X-RAY','XERXES','YANKEE','YELLOWJACKET','YUKON','ZEUS','ZERO','ZEPHYR','ZODIAC'];
+
+			// Shuffle the words using the Fisher-Yates algorithm
+			function shuffle(array) {
+				let currentIndex = array.length, randomIndex;
+
+				// While there remain elements to shuffle...
+				while (currentIndex != 0) {
+
+					// Pick a remaining element...
+					randomIndex = Math.floor(Math.random() * currentIndex);
+					currentIndex--;
+
+					// And swap it with the current element.
+					[array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+				}
+
+				return array;
+			}
+
+			// Shuffle the words
+			const shuffledWords = shuffle(words);
+
+			// Generate the word pairs and append them to the table
+			for (let i = 0; i < num; i++) {
+				const wordPair = shuffledWords[i] + " " + shuffledWords[i + num];
+				const tr = document.createElement("tr");
+				const td = document.createElement("td");
+				td.textContent = wordPair;
+				tr.appendChild(td);
+				tbody.appendChild(tr);
+			}
+		});
+	</script>
+</body>
+</html>
